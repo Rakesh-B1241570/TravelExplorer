@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="WELC0ME"
+        android:textSize="20sp"
+        android:id="@+id/welcometxt"
+        android:layout_margin="20dp"
+        android:gravity="center_horizontal"></TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="YOUR CURRENT ADRRESS IS"
+        android:textSize="20sp"
+        android:layout_margin="20dp"
+        android:id="@+id/adress_txt"
+        android:layout_below="@+id/welcometxt"
+        android:gravity="center_horizontal"></TextView>
+    <TextView
+        android:id="@+id/text_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_below="@+id/adress_txt"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="15sp"
+      />
+
+
+    <Button
+        android:id="@+id/viewplace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:layout_marginTop="50dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/roundedbtn"
+        android:layout_below="@+id/text_home"
+        android:text="VIEW PLACES"></Button>
+
+</RelativeLayout>
