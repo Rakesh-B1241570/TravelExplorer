@@ -1,8 +1,10 @@
-package uk.ac.tees.b1241570.travelexplorer;
+package uk.ac.tees.b1241570.travelexplorer.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import uk.ac.tees.b1241570.travelexplorer.R;
 
 public class MainActivity extends AppCompatActivity {
 
