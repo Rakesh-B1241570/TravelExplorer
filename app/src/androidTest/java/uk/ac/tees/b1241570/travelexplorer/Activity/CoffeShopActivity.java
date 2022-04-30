@@ -48,6 +48,10 @@ import studio.knowhere.travelappg.HttpHandler;
 import studio.knowhere.travelappg.R;
 import studio.knowhere.travelappg.ui.Class.ActivtyDay;
 import studio.knowhere.travelappg.ui.Class.MyBroadcastReceiver;
+import uk.ac.tees.b1241570.travelexplorer.Database.PreferenceManager;
+import uk.ac.tees.b1241570.travelexplorer.Database.SqliteHelper;
+import uk.ac.tees.b1241570.travelexplorer.ui.ActivtyDay;
+import uk.ac.tees.b1241570.travelexplorer.ui.MyBroadcastReceiver;
 
 public class CoffeShopActivity extends AppCompatActivity implements View.OnClickListener {
 

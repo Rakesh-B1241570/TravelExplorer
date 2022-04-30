@@ -14,7 +14,6 @@ import java.util.List;
 
 import studio.knowhere.travelappg.Database.PlacesGenerator;
 import studio.knowhere.travelappg.R;
-import studio.knowhere.travelappg.ui.Class.Place;
 import studio.knowhere.travelappg.ui.Class.PlacesRvAdapter;
 
 
