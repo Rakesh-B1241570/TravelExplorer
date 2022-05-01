@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         sqliteHelper = new SqliteHelper(HomeActivity.this);
-       // FloatingActionButton fab = findViewById(R.id.fab);
+        // FloatingActionButton fab = findViewById(R.id.fab);
        /* fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,9 +68,9 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch (id){
+        switch (id) {
             case R.id.action_settings:
-               sqliteHelper.deleteAllTrip();
+                sqliteHelper.deleteAllTrip();
                 return true;
 
             default:

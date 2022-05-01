@@ -107,10 +107,10 @@ public class ShoppingMallActivity extends AppCompatActivity implements View.OnCl
                 TextView lng = view.findViewById(R.id.lng_id);
                 String PlaceLong = lng.getText().toString();
                 String PlaceLat = lat.getText().toString();
-               // ArrayList<String> arrayListLattitude = new ArrayList<>(Arrays.asList(arrayListvalue.get(4).split("=")));
+                // ArrayList<String> arrayListLattitude = new ArrayList<>(Arrays.asList(arrayListvalue.get(4).split("=")));
 
-              //  ArrayList<String> arrayListLongitude = new ArrayList<>(Arrays.asList(arrayListvalue.get(2).split("=")));
-              //  System.out.println("lat is" + arrayListLongitude.get(1));
+                //  ArrayList<String> arrayListLongitude = new ArrayList<>(Arrays.asList(arrayListvalue.get(2).split("=")));
+                //  System.out.println("lat is" + arrayListLongitude.get(1));
 
 
                 String Userid = preferenceManager.getKeyUserid(userid);
@@ -185,7 +185,7 @@ public class ShoppingMallActivity extends AppCompatActivity implements View.OnCl
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String jsonStr = sh.makeServiceCall("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+latitude+"%2C"+longitude+"&radius=100000&type=shopping|bazar&keyword=mall&key=AIzaSyD5v2LwR5Vf3xVPIb8P6kqy_tn2YY5XfdU");
+            String jsonStr = sh.makeServiceCall("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "%2C" + longitude + "&radius=100000&type=shopping|bazar&keyword=mall&key=AIzaSyD5v2LwR5Vf3xVPIb8P6kqy_tn2YY5XfdU");
             // Log.e("TAG", "Response from url: " + jsonStr);
 
             if (jsonStr != null) {
@@ -224,7 +224,8 @@ public class ShoppingMallActivity extends AppCompatActivity implements View.OnCl
                         contact.put("lng", lng);
 
                         // adding contact to contact list
-                        contactList.add(contact); }
+                        contactList.add(contact);
+                    }
                 } catch (final JSONException e) {
                     Log.e("TAG", "Json parsing error: " + e.getMessage());
                     runOnUiThread(new Runnable() {
@@ -306,7 +307,8 @@ public class ShoppingMallActivity extends AppCompatActivity implements View.OnCl
             }
         });
     }
-    private  void setTimeField() {
+
+    private void setTimeField() {
         mTime.setOnClickListener(this);
 
         Calendar mcurrentTime = Calendar.getInstance();
@@ -336,15 +338,15 @@ public class ShoppingMallActivity extends AppCompatActivity implements View.OnCl
         cal.set(Calendar.HOUR_OF_DAY, selectedHourfinal);  //HOUR
         cal.set(Calendar.MINUTE, selectedMinutefinal);       //MIN
 
-        Log.v("TAG","SELESTED OUR AND MINUTE"+selectedMinutefinal);
+        Log.v("TAG", "SELESTED OUR AND MINUTE" + selectedMinutefinal);
         // cal.set(Calendar.SECOND, 10);       //SEC
         // EditText text = findViewById(R.id.time);
         // int i = Integer.parseInt(String.valueOf(mcurrentTime));
         Intent intent = new Intent(this, MyBroadcastReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 234324273, intent, 0);
-        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
-        Toast.makeText(this, "Alarm set in "+cal.getTimeInMillis()+"  seconds", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Alarm set in " + cal.getTimeInMillis() + "  seconds", Toast.LENGTH_LONG).show();
     }
 
 }

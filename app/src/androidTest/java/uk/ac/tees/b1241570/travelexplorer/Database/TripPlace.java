@@ -11,7 +11,7 @@ public class TripPlace {
     public String purpose;
     public String placename;
 
-    public TripPlace(String idt, String idu, String date, String time,String lattitude, String longitude, String purpose, String placename) {
+    public TripPlace(String idt, String idu, String date, String time, String lattitude, String longitude, String purpose, String placename) {
 
         this.idt = idt;
         this.idu = idu;

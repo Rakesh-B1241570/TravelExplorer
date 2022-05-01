@@ -15,9 +15,9 @@ import studio.knowhere.travelappg.R;
 
 public class PlacesRvAdapter extends RecyclerView.Adapter<PlacesRvAdapter.ViewHolder> {
 
-    private List<Place> mPlaces;
+    private List<studio.knowhere.travelappg.ui.Class.Place> mPlaces;
 
-    public PlacesRvAdapter(List<Place> places) {
+    public PlacesRvAdapter(List<studio.knowhere.travelappg.ui.Class.Place> places) {
         mPlaces = places;
     }
 
@@ -30,7 +30,7 @@ public class PlacesRvAdapter extends RecyclerView.Adapter<PlacesRvAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Place place = mPlaces.get(position);
+        studio.knowhere.travelappg.ui.Class.Place place = mPlaces.get(position);
         holder.mPlaceNameTextView.setText(place.getName());
         holder.mPlaceDescriptionTextView.setText(place.getDescription());
         holder.mPlaceImageView.setImageResource(place.getImageResourceId());

@@ -49,16 +49,16 @@ import studio.knowhere.travelappg.R;
 import studio.knowhere.travelappg.ui.Class.ActivtyDay;
 import studio.knowhere.travelappg.ui.Class.MyBroadcastReceiver;
 
-public class TemplesActivity extends AppCompatActivity implements View.OnClickListener{
+public class TemplesActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ProgressDialog pDialog;
     private ListView lv;
-    String id,date,userid;
+    String id, date, userid;
     Button mClick;
     ArrayList<HashMap<String, String>> contactList;
     ArrayList<String> mList = new ArrayList<>();
     ActivtyDay activtyDay;
-    double latitude,longitude;
+    double latitude, longitude;
     PreferenceManager preferenceManager;
     SqliteHelper sqliteHelper;
     private FusedLocationProviderClient client;
@@ -67,7 +67,7 @@ public class TemplesActivity extends AppCompatActivity implements View.OnClickLi
     SimpleDateFormat dateFormatter;
     TimePickerDialog mTimePicker;
     String PURPOSE = "TEMPLES";
-    int selectedHourfinal,selectedMinutefinal;
+    int selectedHourfinal, selectedMinutefinal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,13 +92,13 @@ public class TemplesActivity extends AppCompatActivity implements View.OnClickLi
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView <?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Object SelctedItem  = parent.getItemAtPosition(position);
-               // String value  = String.valueOf(parent.getItemAtPosition(position));
-                Log.v("TAG","SELECTED ITEM"+SelctedItem);
-                String value  = String.valueOf(parent.getItemAtPosition(position));
-                Log.v("TAG","VALES ARE"+value);
+                Object SelctedItem = parent.getItemAtPosition(position);
+                // String value  = String.valueOf(parent.getItemAtPosition(position));
+                Log.v("TAG", "SELECTED ITEM" + SelctedItem);
+                String value = String.valueOf(parent.getItemAtPosition(position));
+                Log.v("TAG", "VALES ARE" + value);
                 ArrayList<String> arrayListvalue = new ArrayList<>(Arrays.asList(value.split(",")));
                 ArrayList<String> arrayListPlaceName = new ArrayList<>(Arrays.asList(arrayListvalue.get(0).split("=")));
                 String PlaceName = arrayListPlaceName.get(1);
@@ -114,43 +114,43 @@ public class TemplesActivity extends AppCompatActivity implements View.OnClickLi
                 String Userid = preferenceManager.getKeyUserid(userid);
                 //String date = preferenceManager.getKeyAssetid(assetid);
 
-                sqliteHelper.addTripPlace(new TripPlace(null,Userid,date,mTime.getEditableText().toString(),PlaceLat,PlaceLong,PURPOSE,PlaceName));
+                sqliteHelper.addTripPlace(new TripPlace(null, Userid, date, mTime.getEditableText().toString(), PlaceLat, PlaceLong, PURPOSE, PlaceName));
                 startAlert();
 
-                Log.v("TAG","VALES ARE"+value);
-                if(mList.size() ==0){
-                    Toast.makeText(TemplesActivity.this,"Last Option",Toast.LENGTH_SHORT).show();
+                Log.v("TAG", "VALES ARE" + value);
+                if (mList.size() == 0) {
+                    Toast.makeText(TemplesActivity.this, "Last Option", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(TemplesActivity.this, HomeActivity.class);
                     startActivity(intent);
-                }else {
+                } else {
 
-                    Log.v("TAG","INDEX ZERO"+mList.get(0));
-                    if(mList.get(0).equalsIgnoreCase("BREAKFAST")){
+                    Log.v("TAG", "INDEX ZERO" + mList.get(0));
+                    if (mList.get(0).equalsIgnoreCase("BREAKFAST")) {
                         mList.remove("BREAKFAST");
                         activtyDay.getInstance().setList(mList);
                         Intent intent = new Intent(TemplesActivity.this, BreakfastActivity.class);
                         startActivity(intent);
-                    }else if(mList.get(0).equalsIgnoreCase("SHOPPING")){
+                    } else if (mList.get(0).equalsIgnoreCase("SHOPPING")) {
                         mList.remove("SHOPPING");
                         activtyDay.getInstance().setList(mList);
                         Intent intent = new Intent(TemplesActivity.this, studio.knowhere.travelappg.Activity.ShoppingMallActivity.class);
                         startActivity(intent);
-                    }else if(mList.get(0).equalsIgnoreCase("TRECKING")){
+                    } else if (mList.get(0).equalsIgnoreCase("TRECKING")) {
                         mList.remove("TRECKING");
                         activtyDay.getInstance().setList(mList);
                         Intent intent = new Intent(TemplesActivity.this, TreckingPlaceActivity.class);
                         startActivity(intent);
-                    }else if(mList.get(0).equalsIgnoreCase("TEMPLE")){
+                    } else if (mList.get(0).equalsIgnoreCase("TEMPLE")) {
                         mList.remove("TEMPLE");
                         activtyDay.getInstance().setList(mList);
                         Intent intent = new Intent(TemplesActivity.this, TemplesActivity.class);
                         startActivity(intent);
-                    }else if(mList.get(0).equalsIgnoreCase("COFFE")){
+                    } else if (mList.get(0).equalsIgnoreCase("COFFE")) {
                         mList.remove("COFFE");
                         activtyDay.getInstance().setList(mList);
                         Intent intent = new Intent(TemplesActivity.this, CoffeShopActivity.class);
                         startActivity(intent);
-                    }else if(mList.get(0).equalsIgnoreCase("MEAL")){
+                    } else if (mList.get(0).equalsIgnoreCase("MEAL")) {
                         mList.remove("MEAL");
                         activtyDay.getInstance().setList(mList);
                         Intent intent = new Intent(TemplesActivity.this, MealsActivity.class);
@@ -185,7 +185,7 @@ public class TemplesActivity extends AppCompatActivity implements View.OnClickLi
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String jsonStr = sh.makeServiceCall("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+latitude+"%2C"+longitude+"&radius=100000&type=temple|god&keyword=temple&key=AIzaSyD5v2LwR5Vf3xVPIb8P6kqy_tn2YY5XfdU");
+            String jsonStr = sh.makeServiceCall("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "%2C" + longitude + "&radius=100000&type=temple|god&keyword=temple&key=AIzaSyD5v2LwR5Vf3xVPIb8P6kqy_tn2YY5XfdU");
 
             // Log.e("TAG", "Response from url: " + jsonStr);
 
@@ -225,7 +225,8 @@ public class TemplesActivity extends AppCompatActivity implements View.OnClickLi
                         contact.put("lng", lng);
 
                         // adding contact to contact list
-                        contactList.add(contact);   }
+                        contactList.add(contact);
+                    }
                 } catch (final JSONException e) {
                     Log.e("TAG", "Json parsing error: " + e.getMessage());
                     runOnUiThread(new Runnable() {
@@ -268,35 +269,37 @@ public class TemplesActivity extends AppCompatActivity implements View.OnClickLi
             ListAdapter adapter = new SimpleAdapter(
                     TemplesActivity.this, contactList,
                     R.layout.list_hotel_item, new String[]{"name", "distance",
-                    "formattedAddress","lat","lng"}, new int[]{R.id.name_id,
-                    R.id.distance_id, R.id.formattedaddress_id,R.id.lat_id,R.id.lng_id});
+                    "formattedAddress", "lat", "lng"}, new int[]{R.id.name_id,
+                    R.id.distance_id, R.id.formattedaddress_id, R.id.lat_id, R.id.lng_id});
 
             lv.setAdapter(adapter);
         }
 
 
     }
-    public void getcurrentadress(){
+
+    public void getcurrentadress() {
 
         client = LocationServices.getFusedLocationProviderClient(TemplesActivity.this);
 
         client.getLastLocation().addOnSuccessListener(TemplesActivity.this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                if(location!=null){
+                if (location != null) {
                     // Toast.makeText(getApplicationContext(),"ff:0",Toast.LENGTH_LONG).show();
                     // locationAdd.setText(address);
                     latitude = location.getLatitude();
-                    longitude=location.getLongitude();
-                    Log.v("tag","lat is"+latitude);
-                    Log.v("tag","long is"+longitude);
+                    longitude = location.getLongitude();
+                    Log.v("tag", "lat is" + latitude);
+                    Log.v("tag", "long is" + longitude);
                     // Toast.makeText(getContext(),"ff:0"+latitude,Toast.LENGTH_LONG).show();
                     new GetTemples().execute();
                 }
             }
         });
     }
-    private  void setTimeField() {
+
+    private void setTimeField() {
         mTime.setOnClickListener(this);
 
         Calendar mcurrentTime = Calendar.getInstance();
@@ -326,15 +329,15 @@ public class TemplesActivity extends AppCompatActivity implements View.OnClickLi
         cal.set(Calendar.HOUR_OF_DAY, selectedHourfinal);  //HOUR
         cal.set(Calendar.MINUTE, selectedMinutefinal);       //MIN
 
-        Log.v("TAG","SELESTED OUR AND MINUTE"+selectedMinutefinal);
+        Log.v("TAG", "SELESTED OUR AND MINUTE" + selectedMinutefinal);
         // cal.set(Calendar.SECOND, 10);       //SEC
         // EditText text = findViewById(R.id.time);
         // int i = Integer.parseInt(String.valueOf(mcurrentTime));
         Intent intent = new Intent(this, MyBroadcastReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 234324283, intent, 0);
-        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
-        Toast.makeText(this, "Alarm set in "+cal.getTimeInMillis()+"  seconds", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Alarm set in " + cal.getTimeInMillis() + "  seconds", Toast.LENGTH_LONG).show();
     }
 
 }

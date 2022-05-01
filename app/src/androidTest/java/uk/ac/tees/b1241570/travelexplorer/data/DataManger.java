@@ -57,13 +57,14 @@ public class DataManger {
 
     /**
      * To get info detail for detail activity
-     * @param imageId - id of image
-     * @param cityId - id of city name
-     * @param hotelId - id of hotel
-     * @param dateId - id of date
-     * @param bedId -  id of bed
-     * @param adultId - id of adult
-     * @param childId - id of children
+     *
+     * @param imageId   - id of image
+     * @param cityId    - id of city name
+     * @param hotelId   - id of hotel
+     * @param dateId    - id of date
+     * @param bedId     -  id of bed
+     * @param adultId   - id of adult
+     * @param childId   - id of children
      * @param addressId - id of address
      * @return - return the Data Object
      */
@@ -83,6 +84,7 @@ public class DataManger {
 
     /**
      * To extract the string from resource
+     *
      * @param ids - take id to get string
      * @return - return the string according to their ids
      */
@@ -92,6 +94,7 @@ public class DataManger {
 
     /**
      * To get sample data hash map
+     *
      * @return -  reutrn hashmap list
      */
     public HashMap<String, Data> getSampleData() {

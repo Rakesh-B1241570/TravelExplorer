@@ -12,12 +12,13 @@ public class RecyclerViewMargin extends RecyclerView.ItemDecoration {
 
     /**
      * constructor
-     * @param margin desirable margin size in px between the views in the recyclerView
+     *
+     * @param margin  desirable margin size in px between the views in the recyclerView
      * @param columns number of columns of the RecyclerView
      */
-    public RecyclerViewMargin(@IntRange(from=0)int margin , @IntRange(from=0) int columns ) {
+    public RecyclerViewMargin(@IntRange(from = 0) int margin, @IntRange(from = 0) int columns) {
         this.margin = margin;
-        this.columns=columns;
+        this.columns = columns;
 
     }
 
@@ -35,11 +36,11 @@ public class RecyclerViewMargin extends RecyclerView.ItemDecoration {
         //set bottom margin to all
         outRect.bottom = margin;
         //we only add top margin to the first row
-        if (position <columns) {
+        if (position < columns) {
             outRect.top = margin;
         }
         //add left margin only to the first column
-        if(position%columns==0){
+        if (position % columns == 0) {
             outRect.left = margin;
         }
     }

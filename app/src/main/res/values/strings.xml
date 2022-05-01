@@ -1,3 +1,181 @@
 <resources>
-    <string name="app_name">TravelExplorer</string>
+    <string name="app_name">Travel Explorer</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Delete Data</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Make Schedule</string>
+    <string name="menu_slideshow">My Schedule</string>
+    <string name="menu_tools">Trip Packages</string>
+    <string name="menu_place">Places</string>
+    <string name="menu_send">LOGOUT</string>
+
+    <string name="create_account"><font color="#00ff00">text</font></string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="register">Register</string>
+    <string name="back_to_login">Back to Login</string>
+    <string name="title_activity_maps">Map</string>
+
+
+    <string name="topic_see_and_do">See &amp; Do</string>
+    <string name="topic_dine">Dine</string>
+    <string name="topic_shop">Shop</string>
+    <string name="topic_stay">Stay</string>
+
+    <!-- See & Do places -->
+    <string name="place_air_combat_zone">Rakesh Zone</string>
+    <string name="place_air_combat_zone_desc">Jet Fighter Excitement!</string>
+    <string name="place_archery_district">Archery District</string>
+    <string name="place_archery_district_desc">Canada\'s original archery-tag experience!</string>
+    <string name="place_fantasy_fair">Fantasy Fair</string>
+    <string name="place_fantasy_fair_desc">Ontario\'s largest indoor amusement park</string>
+    <string name="place_the_art_gallery">The Art Gallery Of Mississauga</string>
+    <string name="place_the_art_gallery_desc">Bringing art to the community &amp; the community to art</string>
+    <string name="place_the_glenerin_inn_spa">The Spa At Glenerin Inn</string>
+    <string name="place_the_glenerin_inn_spa_desc">Located within the historical and charming Glenerin Inn</string>
+    <string name="place_salt_cave">Salt Cave</string>
+    <string name="place_salt_cave_desc">High Care Wellness Centre</string>
+
+    <!-- Dine places -->
+    <string name="place_168_sushi_buffet">168 Sushi Buffet</string>
+    <string name="place_168_sushi_buffet_desc">Over 168 japanese, chinese, korean, thai item all you can eat</string>
+    <string name="place_mandarin_restaurant">Mandarin Restaurant</string>
+    <string name="place_mandarin_restaurant_desc">All you can eat Chinese buffet</string>
+    <string name="place_bobbys_hideaway">Bobby\'s Hideaway</string>
+    <string name="place_bobbys_hideaway_desc">We\'re Always Cookin\'</string>
+    <string name="place_cock_and_pheasant">Cock &amp; Pheasant</string>
+    <string name="place_cock_and_pheasant_desc">The Neighbourhood Pub. Good Food and Friendly Service</string>
+    <string name="place_chop_steakhouse">Chop Steakhouse</string>
+    <string name="place_chop_steakhouse_desc">Toronto\'s Stylish Steak Restaurant</string>
+    <string name="place_gabriels_restaurant">Gabriel\'s Restaurant</string>
+    <string name="place_gabriels_restaurant_desc">Fine Dining Seafood Restaurant in Mississauga</string>
+
+    <!-- Shop places -->
+    <string name="place_dixie_outlet_mall">Dixie Outlet Mall</string>
+    <string name="place_dixie_outlet_mall_desc">Dixie Outlet Mall features over 135 stores, and brand-name merchandise up to 70% off.</string>
+    <string name="place_erin_mills_town_centre">Erin Mills Town Centre</string>
+    <string name="place_erin_mills_town_centre_desc">Erin Mills Town Centre is an 850,000 sq. ft., regional shopping centre managed by 20VIC Management Inc.</string>
+    <string name="place_sherway_gardens">Sherway Gardens</string>
+    <string name="place_sherway_gardens_desc">Sherway Gardens, located at Hwy. 427 and QEW, is where luxury meets style.</string>
+    <string name="place_square_one_shopping_centre">Square One Shopping Centre</string>
+    <string name="place_square_one_shopping_centre_desc">With 360 stores, Square One is one of the top retail destinations in the Greater Toronto Area.</string>
+    <string name="place_cabin_goods_and_grooming">Cabin Goods &amp; Grooming</string>
+    <string name="place_cabin_goods_and_grooming_desc">A rustic shoppe for gentlemen, tastemakers and those who love them.</string>
+    <string name="place_threshold_aviation">Threshold Aviation</string>
+    <string name="place_threshold_aviation_desc">Pilot Supplies &amp; Aviation Hobby Merchandise, Flight Simulator Adventures</string>
+
+    <!-- Stay places -->
+    <string name="place_park_place_bed_and_breakfast">Park Place Bed &amp; Breakfast</string>
+    <string name="place_park_place_bed_and_breakfast_desc">Not just a bed and breakfas … but your own private suite. Why would you want to stay anywhere else?</string>
+    <string name="place_alt_hotel_toronto_airport">ALT Hotel Toronto Airport</string>
+    <string name="place_alt_hotel_toronto_airport_desc">At Alt Hotels, we make sure you get the best value for your money: ultra-comfortable rooms, super-fast Wi-Fi, inspiring design and an eco-friendly environment.</string>
+    <string name="place_comfort_inn">Comfort Inn</string>
+    <string name="place_comfort_inn_desc">Welcome to the Comfort Inn, a Mississauga hotel on Highway 407 near downtown Mississauga and borders the City of Brampton.</string>
+    <string name="place_four_points">Four Points By Sheraton Mississauga</string>
+    <string name="place_four_points_desc">Four Points Mississauga Meadowvale is located in the Meadowvale Business Park, only minutes from numerous corporate headquarters and the Mississauga Convention Centre.</string>
+    <string name="place_hilton_garden_inn">Hilton Garden Inn Toronto Airport</string>
+    <string name="place_hilton_garden_inn_desc">Unwind at the environmentally friendly Hilton Garden Inn Toronto Airport hotel, awarded 4 Green Keys by the Hotel Association of Canada.</string>
+    <string name="place_holiday_inn_express">Holiday Inn Express &amp; Suites</string>
+    <string name="place_holiday_inn_express_desc">The Holiday Inn Express Hotel and Suites Toronto Mississauga is conveniently located on Hurontario, south of Derry Road, with close proximity to major highways including 401, 407, 410 and just 15 km from Toronto Pearson International Airport.</string>
+
+    <string name="image_view_cd_place">Place image</string>
+
+    <string name="tour_guide">Tour Guide</string>
+    <string name="hotel_image">Hotel Image</string>
+
+    <!-- First Data -->
+    <string name="one_name">New York</string>
+    <string name="one_date">Fri 14 - Mon 18</string>
+    <string name="one_hotel">325</string>
+    <string name="one_bed">2</string>
+    <string name="one_adult">2</string>
+    <string name="one_children">2</string>
+    <string-array name="one_restaurent">
+        <item>Castello di Casole</item>
+        <item>Hotel du Cap-Eden-Roc</item>
+        <item>La Bastide de Gordes</item>
+    </string-array>
+    <string name="one_address">New York, NY, United States</string>
+
+    <!-- Second Data -->
+    <string name="two_name">New Jersey</string>
+    <string name="two_date">Tue 11 - Mon 18</string>
+    <string name="two_hotel">315</string>
+    <string name="two_bed">1</string>
+    <string name="two_adult">1</string>
+    <string name="two_children">2</string>
+    <string-array name="two_restaurent">
+        <item>Hotel du Cap-Eden-Roc</item>
+        <item>Belmond Hotel Splendido</item>
+        <item>D-Hotel Maris</item>
+    </string-array>
+    <string name="two_address">New Jersey, United States</string>
+
+    <!-- Third Data -->
+    <string name="three_name">New Hampshire</string>
+    <string name="three_date">Mon 18 - Wed 20</string>
+    <string name="three_hotel">225</string>
+    <string name="three_bed">3</string>
+    <string name="three_adult">2</string>
+    <string name="three_children">2</string>
+    <string-array name="three_restaurent">
+        <item>Cotton House Hotel</item>
+        <item>Lime Wood</item>
+        <item>Grand Hotel a Villa Feltrinelli</item>
+    </string-array>
+    <string name="three_address">New Hampshire, United States</string>
+
+    <!-- Fourth Data -->
+    <string name="four_name">Nebraska</string>
+    <string name="four_date">Fri 7 - Mon 11</string>
+    <string name="four_hotel">325</string>
+    <string name="four_bed">2</string>
+    <string name="four_adult">2</string>
+    <string name="four_children">2</string>
+    <string-array name="fourth_restaurent">
+        <item>Ett Hem</item>
+        <item>The Gritti Palace</item>
+        <item>Les Fermes de Marie</item>
+    </string-array>
+    <string name="four_address">Nebraska City, NE, United States</string>
+
+    <!-- Fifth Data -->
+    <string name="five_name">Washignton</string>
+    <string name="five_date">Fri 14 - Mon 18</string>
+    <string name="five_hotel">375</string>
+    <string name="five_bed">2</string>
+    <string name="five_adult">2</string>
+    <string name="five_children">2</string>
+    <string-array name="fifth_restaurent">
+        <item>The Gritti Palace</item>
+        <item>Grand Hotel a Villa Feltrinelli</item>
+        <item>Hotel du Cap-Eden-Roc</item>
+    </string-array>
+    <string name="five_address">Washington, DC, United States</string>
+
+    <string name="share_intent">Detail Bundle</string>
+    <string name="change_location">Change Location</string>
+    <string name="dates">Dates</string>
+    <string name="beds">Beds</string>
+    <string name="adults">Adults</string>
+    <string name="children">Children</string>
+    <string name="change_your_hotel">Change Your Hotel</string>
+    <string name="append_hotels">Hotels</string>
+    <string name="restaurent">Restaurent</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="food_court">Food Court</string>
+    <string name="party_place">Party Place</string>
+    <string name="hotel">Foreign Packages</string>
+    <string name="android_studio_android_com">android.studio@android.com</string>
+
+
 </resources>

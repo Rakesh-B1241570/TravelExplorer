@@ -31,7 +31,7 @@ public class PreferenceManager {
     private static final String KEY_PASSWORD = "password";
     private static final String KEY_IS_LOGGED_IN = "isLoggedIn";
     private static final String KEY_IS_REGISTERED = "isregistered";
-    private static final String KEY_NOMINEE_ID= "idnominee";
+    private static final String KEY_NOMINEE_ID = "idnominee";
     private static final String KEY_USERID = "userid";
     private static final String KEY_ASSETID = "subid";
     private static final String KEY_NOM_ASSETID = "nomidasset";
@@ -42,12 +42,6 @@ public class PreferenceManager {
     private static final String KEY_VEHICLE_NUMBER = "vehicle_number";
     private static final String KEY_USER_NAME = "user_name";
     private static final String KEY_USER_EMAILID = "user_emailid";
-
-
-
-
-
-
 
 
     public PreferenceManager(Context context) {
@@ -71,31 +65,33 @@ public class PreferenceManager {
         editor.putString(KEY_USER_EMAILID, user_emailid);
         editor.commit();
     }
+
     public void setKeyVehicleNumber(String vehicle_number) {
         editor.putString(KEY_VEHICLE_NUMBER, vehicle_number);
         editor.commit();
     }
-    public  String getKeyUserMobile() {
+
+    public String getKeyUserMobile() {
         return pref.getString(KEY_USER_MOBILE, null);
         //return KEY_USER_MOBILE;
     }
 
-    public  String getKeyVehicleNumber() {
+    public String getKeyVehicleNumber() {
         return pref.getString(KEY_VEHICLE_NUMBER, null);
         // return KEY_VEHICLE_NUMBER;
     }
 
-    public  String getKeyUserName() {
+    public String getKeyUserName() {
         return pref.getString(KEY_USER_NAME, null);
         // return KEY_VEHICLE_NUMBER;
     }
 
-    public  String getKeyUserEmailid() {
+    public String getKeyUserEmailid() {
         return pref.getString(KEY_USER_EMAILID, null);
         // return KEY_VEHICLE_NUMBER;
     }
 
-    public  void setKeyDate(String date) {
+    public void setKeyDate(String date) {
         editor.putString(KEY_DATE, date);
         editor.commit();
     }
@@ -104,20 +100,22 @@ public class PreferenceManager {
         return pref.getString(KEY_DATE, null);
     }
 
-    public  void setKeyUserid(String userid) {
+    public void setKeyUserid(String userid) {
         editor.putString(KEY_USERID, userid);
         editor.commit();
     }
 
     public String getKeyUserid(String id) {
-        return pref.getString(KEY_USERID,null);
+        return pref.getString(KEY_USERID, null);
     }
-    public  void setKeyStatus(String status) {
+
+    public void setKeyStatus(String status) {
         editor.putString(KEY_STATUS, status);
         editor.commit();
     }
+
     public String getKeyStatus(String STATUS) {
-        return pref.getString(KEY_STATUS,null);
+        return pref.getString(KEY_STATUS, null);
     }
 
     public void setMobileNumber(String mobileNumber) {
@@ -126,32 +124,32 @@ public class PreferenceManager {
     }
 
 
-    public  void setKeyAssetid(String idSub) {
+    public void setKeyAssetid(String idSub) {
         editor.putString(KEY_ASSETID, idSub);
         editor.commit();
     }
 
     public String getKeyAssetid(String idSub) {
-        return pref.getString(KEY_ASSETID,null);
+        return pref.getString(KEY_ASSETID, null);
     }
 
 
-    public  void setKeyNomAssetid(String nomidasset) {
+    public void setKeyNomAssetid(String nomidasset) {
         editor.putString(KEY_NOM_ASSETID, nomidasset);
         editor.commit();
     }
-    public String getKeyNomAssetid(String asssetid) {
-        return pref.getString(KEY_NOM_ASSETID,null);
-    }
 
+    public String getKeyNomAssetid(String asssetid) {
+        return pref.getString(KEY_NOM_ASSETID, null);
+    }
 
 
     ///////////setters id nominee
     public String getKeyNomineeId(String idnomine) {
-        return pref.getString(KEY_NOMINEE_ID,null);
+        return pref.getString(KEY_NOMINEE_ID, null);
     }
 
-    public void  setKeyNomineeId(String idnominee) {
+    public void setKeyNomineeId(String idnominee) {
         editor.putString(KEY_NOMINEE_ID, idnominee);
         editor.commit();
     }
@@ -160,7 +158,7 @@ public class PreferenceManager {
         editor.putString(KEY_NAME, name);
         editor.putString(KEY_EMAIL, email);
         editor.putString(KEY_MOBILE, mobile);
-        editor.putString(KEY_PASSWORD,password);
+        editor.putString(KEY_PASSWORD, password);
         editor.putBoolean(KEY_IS_LOGGED_IN, true);
         editor.commit();
     }
@@ -179,13 +177,15 @@ public class PreferenceManager {
         profile.put("name", pref.getString(KEY_NAME, null));
         profile.put("email", pref.getString(KEY_EMAIL, null));
         profile.put("mobile", pref.getString(KEY_MOBILE, null));
-        profile.put("password",pref.getString(KEY_PASSWORD,null));
+        profile.put("password", pref.getString(KEY_PASSWORD, null));
         return profile;
     }
+
     public void setKeyIsLoggedIn(String mobileNumber) {
         editor.putString(KEY_IS_LOGGED_IN, mobileNumber);
         editor.commit();
     }
+
     //retreiving the userid using key
     public String getKeyIsLoggedIn() {
         return pref.getString(KEY_IS_LOGGED_IN, null);
@@ -195,11 +195,11 @@ public class PreferenceManager {
         editor.putString(KEY_IS_REGISTERED, mobileNumber);
         editor.commit();
     }
+
     //retreiving the userid using key
     public String getKeyIsRegistered() {
         return pref.getString(KEY_IS_REGISTERED, null);
     }
-
 
 
 }

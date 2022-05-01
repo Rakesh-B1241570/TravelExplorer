@@ -10,7 +10,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import studio.knowhere.travelappg.ui.Class.TripPlacePoJO;
+import uk.ac.tees.b1241570.travelexplorer.ui.TripPlacePoJO;
 
 public class SqliteHelper extends SQLiteOpenHelper {
 
@@ -85,7 +85,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
 
     //using this method we can add users to user table
-    public void addUser(User user) {
+    public void addUser(studio.knowhere.travelappg.Database.User user) {
 
         //get writable database
         SQLiteDatabase db = this.getWritableDatabase();
@@ -116,10 +116,10 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
         // insert row
         long todo_trip_id = db.insert(TABLE_TRIP_PLACE, null, values);
-        Log.v("TAG","INTERTED"+todo_trip_id);
+        Log.v("TAG", "INTERTED" + todo_trip_id);
     }
 
-    public User Authenticate(User user) {
+    public studio.knowhere.travelappg.Database.User Authenticate(studio.knowhere.travelappg.Database.User user) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_USERS,// Selecting Table
                 new String[]{KEY_ID, KEY_USER_NAME, KEY_EMAIL, KEY_PASSWORD},//Selecting columns want to query
@@ -127,9 +127,9 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 new String[]{user.email},//Where clause
                 null, null, null);
 
-        if (cursor != null && cursor.moveToFirst()&& cursor.getCount()>0) {
+        if (cursor != null && cursor.moveToFirst() && cursor.getCount() > 0) {
             //if cursor has value then in user database there is user associated with this given email
-            User user1 = new User(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+            studio.knowhere.travelappg.Database.User user1 = new studio.knowhere.travelappg.Database.User(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
 
             //Match both passwords check they are same or not
             if (user.password.equalsIgnoreCase(user1.password)) {
@@ -150,7 +150,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 new String[]{email},//Where clause
                 null, null, null);
 
-        if (cursor != null && cursor.moveToFirst()&& cursor.getCount()>0) {
+        if (cursor != null && cursor.moveToFirst() && cursor.getCount() > 0) {
             //if cursor has value then in user database there is user associated with this given email so return true
             return true;
         }
@@ -168,7 +168,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 new String[]{date},//Where clause
                 null, null, null);
 
-        if (cursor != null && cursor.moveToFirst()&& cursor.getCount()>0) {
+        if (cursor != null && cursor.moveToFirst() && cursor.getCount() > 0) {
             //if cursor has value then in user database there is user associated with this given email so return true
 
             return true;
@@ -180,7 +180,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
     public boolean deleteAllTrip() {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_TRIP_PLACE,null,null);
+        db.delete(TABLE_TRIP_PLACE, null, null);
         return true;
     }
 
@@ -198,8 +198,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 TripPlacePoJO tripPlacePoJO = new TripPlacePoJO();
-               // tripPlacePoJO.setIdt(cursor.getInt(cursor.getColumnIndex(Note.COLUMN_ID)));
-               // tripPlacePoJO.setIdu(cursor.getString(cursor.getColumnIndex(Note.COLUMN_NOTE)));
+                // tripPlacePoJO.setIdt(cursor.getInt(cursor.getColumnIndex(Note.COLUMN_ID)));
+                // tripPlacePoJO.setIdu(cursor.getString(cursor.getColumnIndex(Note.COLUMN_NOTE)));
                 tripPlacePoJO.setDate(cursor.getString(cursor.getColumnIndex(KEY_DATE)));
                 tripPlacePoJO.setTime(cursor.getString(cursor.getColumnIndex(KEY_TIME)));
                 tripPlacePoJO.setPurpose(cursor.getString(cursor.getColumnIndex(KEY_PURPOSE)));

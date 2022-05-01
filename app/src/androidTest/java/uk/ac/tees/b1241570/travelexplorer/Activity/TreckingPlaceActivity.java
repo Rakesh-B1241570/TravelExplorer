@@ -49,24 +49,24 @@ import studio.knowhere.travelappg.R;
 import studio.knowhere.travelappg.ui.Class.ActivtyDay;
 import studio.knowhere.travelappg.ui.Class.MyBroadcastReceiver;
 
-public class TreckingPlaceActivity extends AppCompatActivity implements View.OnClickListener{
+public class TreckingPlaceActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ProgressDialog pDialog;
     private FusedLocationProviderClient client;
     private ListView lv;
-    String id,date,userid;
+    String id, date, userid;
     Button mClick;
     SimpleDateFormat dateFormatter;
     ArrayList<HashMap<String, String>> contactList;
     ArrayList<String> mList = new ArrayList<>();
     ActivtyDay activtyDay;
-    double latitude,longitude;
+    double latitude, longitude;
     EditText mTime;
     TimePickerDialog mTimePicker;
     PreferenceManager preferenceManager;
     SqliteHelper sqliteHelper;
     String PURPOSE = "TRECKING PLACE";
-    int selectedHourfinal,selectedMinutefinal;
+    int selectedHourfinal, selectedMinutefinal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +75,7 @@ public class TreckingPlaceActivity extends AppCompatActivity implements View.OnC
         contactList = new ArrayList<>();
 
         getcurrentadress();
-     //   mClick = (Button) findViewById(R.id.next_id);
+        //   mClick = (Button) findViewById(R.id.next_id);
         sqliteHelper = new SqliteHelper(this);
         preferenceManager = new PreferenceManager(getApplicationContext());
 
@@ -91,13 +91,13 @@ public class TreckingPlaceActivity extends AppCompatActivity implements View.OnC
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView <?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Object SelctedItem  = parent.getItemAtPosition(position);
-               // String value  = String.valueOf(parent.getItemAtPosition(position));
-                Log.v("TAG","SELECTED ITEM"+SelctedItem);
-                String value  = String.valueOf(parent.getItemAtPosition(position));
-                Log.v("TAG","VALES ARE"+value);
+                Object SelctedItem = parent.getItemAtPosition(position);
+                // String value  = String.valueOf(parent.getItemAtPosition(position));
+                Log.v("TAG", "SELECTED ITEM" + SelctedItem);
+                String value = String.valueOf(parent.getItemAtPosition(position));
+                Log.v("TAG", "VALES ARE" + value);
                 ArrayList<String> arrayListvalue = new ArrayList<>(Arrays.asList(value.split(",")));
                 ArrayList<String> arrayListPlaceName = new ArrayList<>(Arrays.asList(arrayListvalue.get(0).split("=")));
                 String PlaceName = arrayListPlaceName.get(1);
@@ -113,42 +113,42 @@ public class TreckingPlaceActivity extends AppCompatActivity implements View.OnC
                 String Userid = preferenceManager.getKeyUserid(userid);
                 //String date = preferenceManager.getKeyAssetid(assetid);
 
-                sqliteHelper.addTripPlace(new TripPlace(null,Userid,date,mTime.getEditableText().toString(),PlaceLat,PlaceLong,PURPOSE,PlaceName));
+                sqliteHelper.addTripPlace(new TripPlace(null, Userid, date, mTime.getEditableText().toString(), PlaceLat, PlaceLong, PURPOSE, PlaceName));
                 startAlert();
-                Log.v("TAG","VALES ARE"+value);
-                if(mList.size() ==0){
-                    Toast.makeText(TreckingPlaceActivity.this,"Last Option",Toast.LENGTH_SHORT).show();
+                Log.v("TAG", "VALES ARE" + value);
+                if (mList.size() == 0) {
+                    Toast.makeText(TreckingPlaceActivity.this, "Last Option", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(TreckingPlaceActivity.this, HomeActivity.class);
                     startActivity(intent);
-                }else {
+                } else {
 
-                    Log.v("TAG","INDEX ZERO"+mList.get(0));
-                    if(mList.get(0).equalsIgnoreCase("BREAKFAST")){
+                    Log.v("TAG", "INDEX ZERO" + mList.get(0));
+                    if (mList.get(0).equalsIgnoreCase("BREAKFAST")) {
                         mList.remove("BREAKFAST");
                         activtyDay.getInstance().setList(mList);
                         Intent intent = new Intent(TreckingPlaceActivity.this, BreakfastActivity.class);
                         startActivity(intent);
-                    }else if(mList.get(0).equalsIgnoreCase("SHOPPING")){
+                    } else if (mList.get(0).equalsIgnoreCase("SHOPPING")) {
                         mList.remove("SHOPPING");
                         activtyDay.getInstance().setList(mList);
                         Intent intent = new Intent(TreckingPlaceActivity.this, studio.knowhere.travelappg.Activity.ShoppingMallActivity.class);
                         startActivity(intent);
-                    }else if(mList.get(0).equalsIgnoreCase("TRECKING")){
+                    } else if (mList.get(0).equalsIgnoreCase("TRECKING")) {
                         mList.remove("TRECKING");
                         activtyDay.getInstance().setList(mList);
                         Intent intent = new Intent(TreckingPlaceActivity.this, TreckingPlaceActivity.class);
                         startActivity(intent);
-                    }else if(mList.get(0).equalsIgnoreCase("TEMPLE")){
+                    } else if (mList.get(0).equalsIgnoreCase("TEMPLE")) {
                         mList.remove("TEMPLE");
                         activtyDay.getInstance().setList(mList);
                         Intent intent = new Intent(TreckingPlaceActivity.this, studio.knowhere.travelappg.Activity.TemplesActivity.class);
                         startActivity(intent);
-                    }else if(mList.get(0).equalsIgnoreCase("COFFE")){
+                    } else if (mList.get(0).equalsIgnoreCase("COFFE")) {
                         mList.remove("COFFE");
                         activtyDay.getInstance().setList(mList);
                         Intent intent = new Intent(TreckingPlaceActivity.this, CoffeShopActivity.class);
                         startActivity(intent);
-                    }else if(mList.get(0).equalsIgnoreCase("MEAL")){
+                    } else if (mList.get(0).equalsIgnoreCase("MEAL")) {
                         mList.remove("MEAL");
                         activtyDay.getInstance().setList(mList);
                         Intent intent = new Intent(TreckingPlaceActivity.this, MealsActivity.class);
@@ -182,8 +182,8 @@ public class TreckingPlaceActivity extends AppCompatActivity implements View.OnC
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String jsonStr = sh.makeServiceCall("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+latitude+"%2C"+longitude+"&radius=100000&type=trecking|mountains|hills&keyword=hills&key=AIzaSyD5v2LwR5Vf3xVPIb8P6kqy_tn2YY5XfdU");
-           // Log.e("TAG", "Response from url: https://api.foursquare.com/v2/venues/search?client_id=BO51ZH5NB2GJMI1GXCEN4SRBICLKHX1ZIO3SPCJGHFSLEVQD&client_secret=AQHXA1BLWNYA55PQQESETWSOFFIPZUHZQNUJRDOSLRXQ2IAX&v=20200224&ll="+lat+","+lang+"&query=HILLS");
+            String jsonStr = sh.makeServiceCall("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "%2C" + longitude + "&radius=100000&type=trecking|mountains|hills&keyword=hills&key=AIzaSyD5v2LwR5Vf3xVPIb8P6kqy_tn2YY5XfdU");
+            // Log.e("TAG", "Response from url: https://api.foursquare.com/v2/venues/search?client_id=BO51ZH5NB2GJMI1GXCEN4SRBICLKHX1ZIO3SPCJGHFSLEVQD&client_secret=AQHXA1BLWNYA55PQQESETWSOFFIPZUHZQNUJRDOSLRXQ2IAX&v=20200224&ll="+lat+","+lang+"&query=HILLS");
 
 
             if (jsonStr != null) {
@@ -222,7 +222,8 @@ public class TreckingPlaceActivity extends AppCompatActivity implements View.OnC
                         contact.put("lng", lng);
 
                         // adding contact to contact list
-                        contactList.add(contact); }
+                        contactList.add(contact);
+                    }
                 } catch (final JSONException e) {
                     Log.e("TAG", "Json parsing error: " + e.getMessage());
                     runOnUiThread(new Runnable() {
@@ -265,8 +266,8 @@ public class TreckingPlaceActivity extends AppCompatActivity implements View.OnC
             ListAdapter adapter = new SimpleAdapter(
                     TreckingPlaceActivity.this, contactList,
                     R.layout.list_hotel_item, new String[]{"name", "distance",
-                    "formattedAddress","lat","lng"}, new int[]{R.id.name_id,
-                    R.id.distance_id, R.id.formattedaddress_id,R.id.lat_id,R.id.lng_id});
+                    "formattedAddress", "lat", "lng"}, new int[]{R.id.name_id,
+                    R.id.distance_id, R.id.formattedaddress_id, R.id.lat_id, R.id.lng_id});
 
             lv.setAdapter(adapter);
         }
@@ -274,27 +275,28 @@ public class TreckingPlaceActivity extends AppCompatActivity implements View.OnC
 
     }
 
-    public void getcurrentadress(){
+    public void getcurrentadress() {
 
         client = LocationServices.getFusedLocationProviderClient(TreckingPlaceActivity.this);
 
         client.getLastLocation().addOnSuccessListener(TreckingPlaceActivity.this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                if(location!=null){
+                if (location != null) {
                     // Toast.makeText(getApplicationContext(),"ff:0",Toast.LENGTH_LONG).show();
                     // locationAdd.setText(address);
                     latitude = location.getLatitude();
-                    longitude=location.getLongitude();
-                    Log.v("tag","lat is"+latitude);
-                    Log.v("tag","long is"+longitude);
+                    longitude = location.getLongitude();
+                    Log.v("tag", "lat is" + latitude);
+                    Log.v("tag", "long is" + longitude);
                     // Toast.makeText(getContext(),"ff:0"+latitude,Toast.LENGTH_LONG).show();
                     new GetTreckingPl().execute();
                 }
             }
         });
     }
-    private  void setTimeField() {
+
+    private void setTimeField() {
         //08022942513
         mTime.setOnClickListener(this);
 
@@ -325,15 +327,15 @@ public class TreckingPlaceActivity extends AppCompatActivity implements View.OnC
         cal.set(Calendar.HOUR_OF_DAY, selectedHourfinal);  //HOUR
         cal.set(Calendar.MINUTE, selectedMinutefinal);       //MIN
 
-        Log.v("TAG","SELESTED OUR AND MINUTE"+selectedMinutefinal);
+        Log.v("TAG", "SELESTED OUR AND MINUTE" + selectedMinutefinal);
         // cal.set(Calendar.SECOND, 10);       //SEC
         // EditText text = findViewById(R.id.time);
         // int i = Integer.parseInt(String.valueOf(mcurrentTime));
         Intent intent = new Intent(this, MyBroadcastReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 234324293, intent, 0);
-        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
-        Toast.makeText(this, "Alarm set in "+cal.getTimeInMillis()+"  seconds", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Alarm set in " + cal.getTimeInMillis() + "  seconds", Toast.LENGTH_LONG).show();
     }
 
 }

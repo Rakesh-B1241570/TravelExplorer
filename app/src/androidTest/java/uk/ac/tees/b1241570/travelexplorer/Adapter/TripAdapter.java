@@ -36,6 +36,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
         this.context = context;
         this.tripPlacePoJOS = tripPlacePoJOS;
     }
+
     @Override
     public int getItemCount() {
         return tripPlacePoJOS.size();
@@ -52,8 +53,8 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-      final TripPlacePoJO tripPlacePoJO = tripPlacePoJOS.get(position);
-        Log.v("tag","list count"+tripPlacePoJOS.size());
+        final TripPlacePoJO tripPlacePoJO = tripPlacePoJOS.get(position);
+        Log.v("tag", "list count" + tripPlacePoJOS.size());
         holder.mpurpose.setText(tripPlacePoJO.getPurpose());
         holder.mtime.setText(tripPlacePoJO.getTime());
         holder.mplacename.setText(tripPlacePoJO.getPlacename());
@@ -82,7 +83,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
                     Log.v("tag", "lat is" + latitude);
                     Log.v("tag", "long is" + longitude);
                     // Toast.makeText(getContext(),"ff:0"+latitude,Toast.LENGTH_LONG).show();
-                   // new BreakfastActivity.GetContacts().execute();
+                    // new BreakfastActivity.GetContacts().execute();
                 }
             }
         });
@@ -92,7 +93,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
             public void onClick(View view) {
 
                 Intent intent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("http://maps.google.com/maps?saddr="+latitude+","+longitude+"&daddr="+tripPlacePoJO.getLattitude()+","+tripPlacePoJO.getLongitude()+""));
+                        Uri.parse("http://maps.google.com/maps?saddr=" + latitude + "," + longitude + "&daddr=" + tripPlacePoJO.getLattitude() + "," + tripPlacePoJO.getLongitude() + ""));
                 context.startActivity(intent);
             }
         });

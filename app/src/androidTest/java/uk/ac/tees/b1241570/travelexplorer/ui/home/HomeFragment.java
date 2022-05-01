@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
 
     private studio.knowhere.travelappg.ui.home.HomeViewModel homeViewModel;
     private FusedLocationProviderClient client;
-    double latitude,longitude;
+    double latitude, longitude;
     String address;
     TextView textView;
     Button mViewPlace;
@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment {
         client = LocationServices.getFusedLocationProviderClient(getContext());
 
         String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
-        Log.v("TAG","date is"+date);
+        Log.v("TAG", "date is" + date);
        /* sqliteHelper = new SqliteHelper(getContext());
         if (!sqliteHelper.isDateExists(date)) {
 
@@ -71,15 +71,15 @@ public class HomeFragment extends Fragment {
         client.getLastLocation().addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                if(location!=null){
-                  //  Toast.makeText(getContext(),"ff:0",Toast.LENGTH_LONG).show();
+                if (location != null) {
+                    //  Toast.makeText(getContext(),"ff:0",Toast.LENGTH_LONG).show();
                     // locationAdd.setText(address);
                     latitude = location.getLatitude();
-                    longitude=location.getLongitude();
-                    Log.v("tag","lat is"+latitude);
-                    Log.v("tag","long is"+longitude);
-                   // Toast.makeText(getContext(),"ff:0"+latitude,Toast.LENGTH_LONG).show();
-                    getAddress(latitude,longitude);
+                    longitude = location.getLongitude();
+                    Log.v("tag", "lat is" + latitude);
+                    Log.v("tag", "long is" + longitude);
+                    // Toast.makeText(getContext(),"ff:0"+latitude,Toast.LENGTH_LONG).show();
+                    getAddress(latitude, longitude);
                     currentLatLong.setLattitude(String.valueOf(latitude));
                     currentLatLong.setLongitude(String.valueOf(longitude));
                 }
@@ -102,14 +102,14 @@ public class HomeFragment extends Fragment {
 
         Geocoder geocoder;
         List<Address> addresses;
-        geocoder=new Geocoder(getContext(), Locale.getDefault());
+        geocoder = new Geocoder(getContext(), Locale.getDefault());
 
 
-        try{
-            addresses=geocoder.getFromLocation(latitude,longitude,1);
-            address=addresses.get(0).getAddressLine(0);
+        try {
+            addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            address = addresses.get(0).getAddressLine(0);
             textView.setText(address);
-            Log.v("ddff","adres:"+address);
+            Log.v("ddff", "adres:" + address);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -121,15 +121,15 @@ public class HomeFragment extends Fragment {
         client.getLastLocation().addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                if(location!=null){
-                   // Toast.makeText(getContext(),"ff:0",Toast.LENGTH_LONG).show();
+                if (location != null) {
+                    // Toast.makeText(getContext(),"ff:0",Toast.LENGTH_LONG).show();
                     // locationAdd.setText(address);
                     latitude = location.getLatitude();
-                    longitude=location.getLongitude();
-                    Log.v("tag","lat is"+latitude);
-                    Log.v("tag","long is"+longitude);
-                   // Toast.makeText(getContext(),"ff:0"+latitude,Toast.LENGTH_LONG).show();
-                    getAddress(latitude,longitude);
+                    longitude = location.getLongitude();
+                    Log.v("tag", "lat is" + latitude);
+                    Log.v("tag", "long is" + longitude);
+                    // Toast.makeText(getContext(),"ff:0"+latitude,Toast.LENGTH_LONG).show();
+                    getAddress(latitude, longitude);
                     currentLatLong.setLattitude(String.valueOf(latitude));
                     currentLatLong.setLongitude(String.valueOf(longitude));
                 }
@@ -145,15 +145,15 @@ public class HomeFragment extends Fragment {
         client.getLastLocation().addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                if(location!=null){
-                  //  Toast.makeText(getContext(),"ff:0",Toast.LENGTH_LONG).show();
+                if (location != null) {
+                    //  Toast.makeText(getContext(),"ff:0",Toast.LENGTH_LONG).show();
                     // locationAdd.setText(address);
                     latitude = location.getLatitude();
-                    longitude=location.getLongitude();
-                    Log.v("tag","lat is"+latitude);
-                    Log.v("tag","long is"+longitude);
-                   // Toast.makeText(getContext(),"ff:0"+latitude,Toast.LENGTH_LONG).show();
-                    getAddress(latitude,longitude);
+                    longitude = location.getLongitude();
+                    Log.v("tag", "lat is" + latitude);
+                    Log.v("tag", "long is" + longitude);
+                    // Toast.makeText(getContext(),"ff:0"+latitude,Toast.LENGTH_LONG).show();
+                    getAddress(latitude, longitude);
                     currentLatLong.setLattitude(String.valueOf(latitude));
                     currentLatLong.setLongitude(String.valueOf(longitude));
                 }

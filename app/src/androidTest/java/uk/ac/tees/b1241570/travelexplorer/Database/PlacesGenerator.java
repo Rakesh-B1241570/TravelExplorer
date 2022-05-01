@@ -26,7 +26,7 @@ public class PlacesGenerator {
 
     private static List<Place> getSeeAndDoPlaces(Context context) {
         List<Place> places = new ArrayList<>();
-       // places.add(new Place(context.getString(R.string.place_air_combat_zone), context.getString(R.string.place_air_combat_zone_desc), R.drawable.banglorepalace));
+        // places.add(new Place(context.getString(R.string.place_air_combat_zone), context.getString(R.string.place_air_combat_zone_desc), R.drawable.banglorepalace));
         places.add(new Place(context.getString(R.string.place_archery_district), context.getString(R.string.place_archery_district_desc), R.drawable.logotr));
         places.add(new Place(context.getString(R.string.place_fantasy_fair), context.getString(R.string.place_fantasy_fair_desc), R.drawable.shopping));
         places.add(new Place(context.getString(R.string.place_the_art_gallery), context.getString(R.string.place_the_art_gallery_desc), R.drawable.banglorepalace));

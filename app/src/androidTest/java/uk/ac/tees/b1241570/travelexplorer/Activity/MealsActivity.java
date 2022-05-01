@@ -187,7 +187,7 @@ public class MealsActivity extends AppCompatActivity implements View.OnClickList
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String jsonStr = sh.makeServiceCall("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+latitude+"%2C"+longitude+"&radius=100000&type=hotel|food|returant&keyword=hotel&key=AIzaSyD5v2LwR5Vf3xVPIb8P6kqy_tn2YY5XfdU");
+            String jsonStr = sh.makeServiceCall("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "%2C" + longitude + "&radius=100000&type=hotel|food|returant&keyword=hotel&key=AIzaSyD5v2LwR5Vf3xVPIb8P6kqy_tn2YY5XfdU");
             // Log.e("TAG", "Response from url: " + jsonStr);
 
             if (jsonStr != null) {
@@ -226,7 +226,8 @@ public class MealsActivity extends AppCompatActivity implements View.OnClickList
                         contact.put("lng", lng);
 
                         // adding contact to contact list
-                        contactList.add(contact); }
+                        contactList.add(contact);
+                    }
                 } catch (final JSONException e) {
                     Log.e("TAG", "Json parsing error: " + e.getMessage());
                     runOnUiThread(new Runnable() {
@@ -308,7 +309,8 @@ public class MealsActivity extends AppCompatActivity implements View.OnClickList
             }
         });
     }
-    private  void setTimeField() {
+
+    private void setTimeField() {
         mTime.setOnClickListener(this);
 
         Calendar mcurrentTime = Calendar.getInstance();
@@ -338,15 +340,15 @@ public class MealsActivity extends AppCompatActivity implements View.OnClickList
         cal.set(Calendar.HOUR_OF_DAY, selectedHourfinal);  //HOUR
         cal.set(Calendar.MINUTE, selectedMinutefinal);       //MIN
 
-        Log.v("TAG","SELESTED OUR AND MINUTE"+selectedMinutefinal);
+        Log.v("TAG", "SELESTED OUR AND MINUTE" + selectedMinutefinal);
         // cal.set(Calendar.SECOND, 10);       //SEC
         // EditText text = findViewById(R.id.time);
         // int i = Integer.parseInt(String.valueOf(mcurrentTime));
         Intent intent = new Intent(this, MyBroadcastReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 234324263, intent, 0);
-        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
-       // Toast.makeText(this, "Alarm set in "+cal.getTimeInMillis()+"  seconds", Toast.LENGTH_LONG).show();
+        // Toast.makeText(this, "Alarm set in "+cal.getTimeInMillis()+"  seconds", Toast.LENGTH_LONG).show();
     }
 
 }

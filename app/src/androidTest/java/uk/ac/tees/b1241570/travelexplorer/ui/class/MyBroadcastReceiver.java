@@ -28,8 +28,8 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
 
-       // Toast.makeText(context, "Alarm Ringing", Toast.LENGTH_LONG).show();
-        Log.v("TAG","ALARM TRIGGERS");
+        // Toast.makeText(context, "Alarm Ringing", Toast.LENGTH_LONG).show();
+        Log.v("TAG", "ALARM TRIGGERS");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             //Channel name

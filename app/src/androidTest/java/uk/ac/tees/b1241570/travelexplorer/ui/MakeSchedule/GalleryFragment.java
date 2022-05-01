@@ -36,12 +36,12 @@ import studio.knowhere.travelappg.BreakfastActivity;
 import studio.knowhere.travelappg.R;
 import studio.knowhere.travelappg.ui.Class.ActivtyDay;
 
-public class GalleryFragment extends Fragment implements View.OnClickListener{
+public class GalleryFragment extends Fragment implements View.OnClickListener {
 
     private studio.knowhere.travelappg.ui.MakeSchedule.GalleryViewModel galleryViewModel;
     Button Submit;
-    EditText mDate,mFromTime,mTotime;
-    CheckBox mBreakFastCheck, mShoppingCheck,mTreckingheck,mTemplecheck,mCoffecheck,mMealsCheck;
+    EditText mDate, mFromTime, mTotime;
+    CheckBox mBreakFastCheck, mShoppingCheck, mTreckingheck, mTemplecheck, mCoffecheck, mMealsCheck;
     ActivtyDay activtyDay;
     ArrayList<String> mList = new ArrayList<>();
     DatePickerDialog EnterDatePickerDialog;
@@ -55,11 +55,11 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
 
         mBreakFastCheck = (CheckBox) root.findViewById(R.id.breakfast_id);
-        mShoppingCheck = (CheckBox)root.findViewById(R.id.shoppingmall_id);
-        mTreckingheck =(CheckBox) root.findViewById(R.id.trecking_id);
-        mTemplecheck = (CheckBox)root.findViewById(R.id.temples_id);
-        mCoffecheck = (CheckBox)root.findViewById(R.id.coffeshop_id);
-        mMealsCheck = (CheckBox)root.findViewById(R.id.meals_id);
+        mShoppingCheck = (CheckBox) root.findViewById(R.id.shoppingmall_id);
+        mTreckingheck = (CheckBox) root.findViewById(R.id.trecking_id);
+        mTemplecheck = (CheckBox) root.findViewById(R.id.temples_id);
+        mCoffecheck = (CheckBox) root.findViewById(R.id.coffeshop_id);
+        mMealsCheck = (CheckBox) root.findViewById(R.id.meals_id);
         Submit = (Button) root.findViewById(R.id.submit_id);
         mDate = (EditText) root.findViewById(R.id.current_date);
         mFromTime = (EditText) root.findViewById(R.id.from_time_id);
@@ -70,7 +70,7 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
         dateFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
         String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
         mDate.setText(date);
-       // setDateTimeField();
+        // setDateTimeField();
         setTimeField();
         setTimeToField();
 
@@ -78,9 +78,9 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-                if(b){
+                if (b) {
                     mList.add("BREAKFAST");
-                }else{
+                } else {
                     mList.remove("BREAKFAST");
                 }
             }
@@ -89,9 +89,9 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-                if(b){
+                if (b) {
                     mList.add("SHOPPING");
-                }else{
+                } else {
                     mList.remove("SHOPPING");
                 }
             }
@@ -101,9 +101,9 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-                if(b){
+                if (b) {
                     mList.add("TRECKING");
-                }else{
+                } else {
                     mList.remove("TRECKING");
                 }
             }
@@ -112,9 +112,9 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-                if(b){
+                if (b) {
                     mList.add("TEMPLE");
-                }else{
+                } else {
                     mList.remove("TEMPLE");
                 }
             }
@@ -123,9 +123,9 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-                if(b){
+                if (b) {
                     mList.add("COFFE");
-                }else{
+                } else {
                     mList.remove("COFFE");
                 }
             }
@@ -135,9 +135,9 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-                if(b){
+                if (b) {
                     mList.add("MEAL");
-                }else{
+                } else {
                     mList.remove("MEAL");
                 }
             }
@@ -146,45 +146,45 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onClick(View view) {
 
-                Log.v("TAG","ARRAY VALES ARE"+mList);
+                Log.v("TAG", "ARRAY VALES ARE" + mList);
 
-               if(mList.size() ==0){
-                   Toast.makeText(getContext(),"Please select any one",Toast.LENGTH_SHORT).show();
-               }else {
+                if (mList.size() == 0) {
+                    Toast.makeText(getContext(), "Please select any one", Toast.LENGTH_SHORT).show();
+                } else {
 
-                  Log.v("TAG","INDEX ZERO"+mList.get(0));
-                  if(mList.get(0).equalsIgnoreCase("BREAKFAST")){
-                      mList.remove("BREAKFAST");
-                      activtyDay.getInstance().setList(mList);
-                      Intent intent = new Intent(getContext(), BreakfastActivity.class);
-                       startActivity(intent);
-                  }else if(mList.get(0).equalsIgnoreCase("SHOPPING")){
-                      mList.remove("SHOPPING");
-                      activtyDay.getInstance().setList(mList);
-                      Intent intent = new Intent(getContext(), ShoppingMallActivity.class);
-                      startActivity(intent);
-                  }else if(mList.get(0).equalsIgnoreCase("TRECKING")){
-                      mList.remove("TRECKING");
-                      activtyDay.getInstance().setList(mList);
-                      Intent intent = new Intent(getContext(), TreckingPlaceActivity.class);
-                      startActivity(intent);
-                  }else if(mList.get(0).equalsIgnoreCase("TEMPLE")){
-                      mList.remove("TEMPLE");
-                      activtyDay.getInstance().setList(mList);
-                      Intent intent = new Intent(getContext(), TemplesActivity.class);
-                      startActivity(intent);
-                  }else if(mList.get(0).equalsIgnoreCase("COFFE")){
-                      mList.remove("COFFE");
-                      activtyDay.getInstance().setList(mList);
-                      Intent intent = new Intent(getContext(), CoffeShopActivity.class);
-                      startActivity(intent);
-                  }else if(mList.get(0).equalsIgnoreCase("MEAL")){
-                      mList.remove("MEAL");
-                      activtyDay.getInstance().setList(mList);
-                      Intent intent = new Intent(getContext(), MealsActivity.class);
-                      startActivity(intent);
-                  }
-               }
+                    Log.v("TAG", "INDEX ZERO" + mList.get(0));
+                    if (mList.get(0).equalsIgnoreCase("BREAKFAST")) {
+                        mList.remove("BREAKFAST");
+                        activtyDay.getInstance().setList(mList);
+                        Intent intent = new Intent(getContext(), BreakfastActivity.class);
+                        startActivity(intent);
+                    } else if (mList.get(0).equalsIgnoreCase("SHOPPING")) {
+                        mList.remove("SHOPPING");
+                        activtyDay.getInstance().setList(mList);
+                        Intent intent = new Intent(getContext(), ShoppingMallActivity.class);
+                        startActivity(intent);
+                    } else if (mList.get(0).equalsIgnoreCase("TRECKING")) {
+                        mList.remove("TRECKING");
+                        activtyDay.getInstance().setList(mList);
+                        Intent intent = new Intent(getContext(), TreckingPlaceActivity.class);
+                        startActivity(intent);
+                    } else if (mList.get(0).equalsIgnoreCase("TEMPLE")) {
+                        mList.remove("TEMPLE");
+                        activtyDay.getInstance().setList(mList);
+                        Intent intent = new Intent(getContext(), TemplesActivity.class);
+                        startActivity(intent);
+                    } else if (mList.get(0).equalsIgnoreCase("COFFE")) {
+                        mList.remove("COFFE");
+                        activtyDay.getInstance().setList(mList);
+                        Intent intent = new Intent(getContext(), CoffeShopActivity.class);
+                        startActivity(intent);
+                    } else if (mList.get(0).equalsIgnoreCase("MEAL")) {
+                        mList.remove("MEAL");
+                        activtyDay.getInstance().setList(mList);
+                        Intent intent = new Intent(getContext(), MealsActivity.class);
+                        startActivity(intent);
+                    }
+                }
 
             }
         });
@@ -192,7 +192,7 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
     }
 
     private void setDateTimeField() {
-      //  mdate = (EditText) findViewById(R.id.appoint_date_ed_id);
+        //  mdate = (EditText) findViewById(R.id.appoint_date_ed_id);
         mDate.setInputType(InputType.TYPE_NULL);
         mDate.requestFocus();
         mDate.setOnClickListener(this);
@@ -203,11 +203,11 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
 
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 Calendar newDate = Calendar.getInstance();
-                Log.v("newCalendar",""+newDate);
+                Log.v("newCalendar", "" + newDate);
                 newDate.set(year, monthOfYear, dayOfMonth);
 
-               // mDate.setText(dateFormatter.format(newDate.getTime()));
-                Log.v("newCalendar",""+mDate);
+                // mDate.setText(dateFormatter.format(newDate.getTime()));
+                Log.v("newCalendar", "" + mDate);
 
             }
 
@@ -218,7 +218,7 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
     }
 
     //for time picker
-    private  void setTimeField() {
+    private void setTimeField() {
         mFromTime.setOnClickListener(this);
 
         Calendar mcurrentTime = Calendar.getInstance();
@@ -236,7 +236,7 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
 
     }
 
-    private  void setTimeToField() {
+    private void setTimeToField() {
         mTotime.setOnClickListener(this);
 
         Calendar mcurrentTime = Calendar.getInstance();
@@ -253,7 +253,6 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
         mTimePicker.show();
 
     }
-
 
 
     @Override

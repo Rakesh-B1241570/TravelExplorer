@@ -42,22 +42,22 @@ public class SlideshowFragment extends Fragment {
 
         tripPlacePoJOS.addAll(sqliteHelper.getAllTripPlans());
 
-      //  Log.v("TAG","GET ALL TRIP VALUE"+String.valueOf(tripPlacePoJOS));
+        //  Log.v("TAG","GET ALL TRIP VALUE"+String.valueOf(tripPlacePoJOS));
         mAdapter = new TripAdapter(getContext(), tripPlacePoJOS);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
-       recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
       /*  RecyclerViewMargin decoration = new RecyclerViewMargin(itemMargin, numColumns);
         recyclerView.addItemDecoration(decoration);*/
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
-      //  recyclerView.addItemDecoration(new DividerItemDecoration(, 16));
+        //  recyclerView.addItemDecoration(new DividerItemDecoration(, 16));
         recyclerView.setAdapter(mAdapter);
 
         mMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-               // Intent intent = new Intent(getContext(), MapsActivity.class);
+                // Intent intent = new Intent(getContext(), MapsActivity.class);
                 //startActivity(intent);
             }
         });

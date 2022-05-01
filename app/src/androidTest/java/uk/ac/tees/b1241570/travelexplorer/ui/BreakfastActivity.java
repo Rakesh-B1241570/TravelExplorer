@@ -190,8 +190,8 @@ public class BreakfastActivity extends AppCompatActivity implements View.OnClick
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-           // String jsonStr = sh.makeServiceCall("https://api.foursquare.com/v2/venues/search?client_id=LRREPRA2NJJC022WL4TRTHBQQBRUDRKIUOPV2RF5RYXRN5L5&client_secret=AQME2R4XW1NVLJG2KPDCKVSCPEBHLGBZDOUSYDKDJE3U13AJ&v=20200224&ll=" + latitude + "," + longitude + "&query=HOTEL");
-            String jsonStr = sh.makeServiceCall("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+latitude+"%2C"+longitude+"&radius=100000&type=food|returant&keyword=food&key=AIzaSyD5v2LwR5Vf3xVPIb8P6kqy_tn2YY5XfdU");
+            // String jsonStr = sh.makeServiceCall("https://api.foursquare.com/v2/venues/search?client_id=LRREPRA2NJJC022WL4TRTHBQQBRUDRKIUOPV2RF5RYXRN5L5&client_secret=AQME2R4XW1NVLJG2KPDCKVSCPEBHLGBZDOUSYDKDJE3U13AJ&v=20200224&ll=" + latitude + "," + longitude + "&query=HOTEL");
+            String jsonStr = sh.makeServiceCall("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "%2C" + longitude + "&radius=100000&type=food|returant&keyword=food&key=AIzaSyD5v2LwR5Vf3xVPIb8P6kqy_tn2YY5XfdU");
 
             Log.v("TAG", "URL IS" + "https://api.foursquare.com/v2/venues/search?client_id=BO51ZH5NB2GJMI1GXCEN4SRBICLKHX1ZIO3SPCJGHFSLEVQD&client_secret=AQHXA1BLWNYA55PQQESETWSOFFIPZUHZQNUJRDOSLRXQ2IAX&v=20200224&ll=" + latitude + "," + longitude + "&query=HOTEL");
             // Log.e("TAG", "Response from url: " + jsonStr);
@@ -201,7 +201,7 @@ public class BreakfastActivity extends AppCompatActivity implements View.OnClick
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
                     System.out.println(jsonStr);
-                   // JSONObject responsejsonObj = jsonObj.getJSONObject("jsonStr");
+                    // JSONObject responsejsonObj = jsonObj.getJSONObject("jsonStr");
                     // Getting JSON Array node
                     JSONArray venuesresult = jsonObj.getJSONArray("results");
 
@@ -214,7 +214,7 @@ public class BreakfastActivity extends AppCompatActivity implements View.OnClick
                         String distance = c.getString("rating");
                         String formattedAddress = c.getString("vicinity");
 
-                       // distance = String.valueOf(Float.parseFloat(distance) /);
+                        // distance = String.valueOf(Float.parseFloat(distance) /);
 
                         JSONObject geometry = c.getJSONObject("geometry");
                         JSONObject location = geometry.getJSONObject("location");
@@ -315,17 +315,18 @@ public class BreakfastActivity extends AppCompatActivity implements View.OnClick
             }
         });
     }
-    private  void setTimeField() {
+
+    private void setTimeField() {
         mTime.setOnClickListener(this);
 
         mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
         int minute = mcurrentTime.get(Calendar.MINUTE);
-       // mcurrentTime.setTimeInMillis(System.currentTimeMillis());
+        // mcurrentTime.setTimeInMillis(System.currentTimeMillis());
 
         mTimePicker = new TimePickerDialog(BreakfastActivity.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
-            public void onTimeSet(TimePicker timePicker, int selectedHour,  int selectedMinute) {
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                 mTime.setText(selectedHour + ":" + selectedMinute);
                 selectedHourfinal = selectedHour;
                 selectedMinutefinal = selectedMinute;
@@ -333,8 +334,8 @@ public class BreakfastActivity extends AppCompatActivity implements View.OnClick
         }, hour, minute, true);//Yes 24 hour time
         mTimePicker.setTitle("Select Time");
         mTimePicker.show();
-        Log.v("TAG","CUTTENT TIME"+mcurrentTime);
-        Log.v("TAG","SELECTED TIME"+mTime.getEditableText().toString());
+        Log.v("TAG", "CUTTENT TIME" + mcurrentTime);
+        Log.v("TAG", "SELECTED TIME" + mTime.getEditableText().toString());
 
 
     }
@@ -349,17 +350,15 @@ public class BreakfastActivity extends AppCompatActivity implements View.OnClick
         cal.set(Calendar.HOUR_OF_DAY, selectedHourfinal);  //HOUR
         cal.set(Calendar.MINUTE, selectedMinutefinal);       //MIN
 
-        Log.v("TAG","SELESTED OUR AND MINUTE"+selectedMinutefinal);
-       // cal.set(Calendar.SECOND, 10);       //SEC
-       // EditText text = findViewById(R.id.time);
-       // int i = Integer.parseInt(String.valueOf(mcurrentTime));
+        Log.v("TAG", "SELESTED OUR AND MINUTE" + selectedMinutefinal);
+        // cal.set(Calendar.SECOND, 10);       //SEC
+        // EditText text = findViewById(R.id.time);
+        // int i = Integer.parseInt(String.valueOf(mcurrentTime));
         Intent intent = new Intent(this, MyBroadcastReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 234324243, intent, 0);
-        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
-       // Toast.makeText(this, "Alarm set in "+cal.getTimeInMillis()+"  seconds", Toast.LENGTH_LONG).show();
-
-
+        // Toast.makeText(this, "Alarm set in "+cal.getTimeInMillis()+"  seconds", Toast.LENGTH_LONG).show();
 
 
     }
