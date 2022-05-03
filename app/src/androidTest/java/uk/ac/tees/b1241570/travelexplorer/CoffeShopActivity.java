@@ -1,12 +1,10 @@
-package uk.ac.tees.b1241570.travelexplorer.Activity;
+package uk.ac.tees.b1241570.travelexplorer;
 
-import android.Manifest;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,7 +21,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -48,59 +45,57 @@ import studio.knowhere.travelappg.Database.SqliteHelper;
 import studio.knowhere.travelappg.Database.TripPlace;
 import studio.knowhere.travelappg.HomeActivity;
 import studio.knowhere.travelappg.HttpHandler;
-import studio.knowhere.travelappg.R;
 import studio.knowhere.travelappg.ui.Class.ActivtyDay;
 import studio.knowhere.travelappg.ui.Class.MyBroadcastReceiver;
 
-public class MealsActivity extends AppCompatActivity implements View.OnClickListener {
+public class CoffeShopActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ProgressDialog pDialog;
     private ListView lv;
-    String id, date, userid;
+    String id,date,userid;
     Button mClick;
     ArrayList<HashMap<String, String>> contactList;
     ArrayList<String> mList = new ArrayList<>();
     ActivtyDay activtyDay;
-    double latitude, longitude;
+    SimpleDateFormat dateFormatter;
+    double latitude,longitude;
     private FusedLocationProviderClient client;
     EditText mTime;
-    SimpleDateFormat dateFormatter;
-    TimePickerDialog mTimePicker;
     PreferenceManager preferenceManager;
     SqliteHelper sqliteHelper;
-    String PURPOSE = "MEALS";
-    int selectedHourfinal, selectedMinutefinal;
+    TimePickerDialog mTimePicker;
+    String PURPOSE = "COFFEE SHOP";
+    int selectedHourfinal,selectedMinutefinal;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meals);
+        setContentView(R.layout.activity_coffe_shop);
         contactList = new ArrayList<>();
-        // mClick = (Button) findViewById(R.id.next_id);
-        getcurrentadress();
-        lv = (ListView) findViewById(R.id.listofmeals_listview);
-
+      //  mClick = (Button) findViewById(R.id.next_id);
         activtyDay = new ActivtyDay();
         mList = activtyDay.getInstance().getList();
+        getcurrentadress();
         sqliteHelper = new SqliteHelper(this);
         preferenceManager = new PreferenceManager(getApplicationContext());
+        lv = (ListView) findViewById(R.id.listofcoffeshop_listview);
 
         mTime = (EditText) findViewById(R.id.time_id);
-        dateFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
         setTimeField();
         date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView <?> parent, View view, int position, long id) {
 
-                Object SelctedItem = parent.getItemAtPosition(position);
-                String value = String.valueOf(parent.getItemAtPosition(position));
+                Object SelctedItem  = parent.getItemAtPosition(position);
+                String value  = String.valueOf(parent.getItemAtPosition(position));
 
                 //Log.v("TAG","SELECTED ITEM"+SelctedItem);
-                // String value  = String.valueOf(parent.getItemAtPosition(position));
-                Log.v("TAG", "VALES ARE" + value);
+               // String value  = String.valueOf(parent.getItemAtPosition(position));
+                Log.v("TAG","VALES ARE"+value);
                 ArrayList<String> arrayListvalue = new ArrayList<>(Arrays.asList(value.split(",")));
                 ArrayList<String> arrayListPlaceName = new ArrayList<>(Arrays.asList(arrayListvalue.get(0).split("=")));
                 String PlaceName = arrayListPlaceName.get(1);
@@ -116,49 +111,53 @@ public class MealsActivity extends AppCompatActivity implements View.OnClickList
                 String Userid = preferenceManager.getKeyUserid(userid);
                 //String date = preferenceManager.getKeyAssetid(assetid);
 
-                sqliteHelper.addTripPlace(new TripPlace(null, Userid, date, mTime.getEditableText().toString(), PlaceLat, PlaceLong, PURPOSE, PlaceName));
+                sqliteHelper.addTripPlace(new TripPlace(null,Userid,date,mTime.getEditableText().toString(),PlaceLat,PlaceLong,PURPOSE,PlaceName));
                 startAlert();
-
-                Log.v("TAG", "VALES ARE" + value);
-                if (mList.size() == 0) {
-                    Toast.makeText(MealsActivity.this, "Last Option", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MealsActivity.this, HomeActivity.class);
+                Log.v("TAG","VALES ARE"+value);
+                if(mList.size() ==0){
+                    Toast.makeText(CoffeShopActivity.this,"Last Option",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(CoffeShopActivity.this, HomeActivity.class);
                     startActivity(intent);
-                } else {
+                }else {
 
-                    Log.v("TAG", "INDEX ZERO" + mList.get(0));
-                    if (mList.get(0).equalsIgnoreCase("BREAKFAST")) {
+                    Log.v("TAG","INDEX ZERO"+mList.get(0));
+                    if(mList.get(0).equalsIgnoreCase("BREAKFAST")){
                         mList.remove("BREAKFAST");
                         activtyDay.getInstance().setList(mList);
-                        Intent intent = new Intent(MealsActivity.this, BreakfastActivity.class);
+                        Intent intent = new Intent(CoffeShopActivity.this, BreakfastActivity.class);
                         startActivity(intent);
-                    } else if (mList.get(0).equalsIgnoreCase("SHOPPING")) {
+                    }else if(mList.get(0).equalsIgnoreCase("SHOPPING")){
                         mList.remove("SHOPPING");
                         activtyDay.getInstance().setList(mList);
-                        Intent intent = new Intent(MealsActivity.this, ShoppingMallActivity.class);
+                        Intent intent = new Intent(CoffeShopActivity.this, ShoppingMallActivity.class);
                         startActivity(intent);
-                    } else if (mList.get(0).equalsIgnoreCase("TRECKING")) {
+                    }else if(mList.get(0).equalsIgnoreCase("TRECKING")){
                         mList.remove("TRECKING");
                         activtyDay.getInstance().setList(mList);
-                        Intent intent = new Intent(MealsActivity.this, TreckingPlaceActivity.class);
+                        Intent intent = new Intent(CoffeShopActivity.this, TreckingPlaceActivity.class);
                         startActivity(intent);
-                    } else if (mList.get(0).equalsIgnoreCase("TEMPLE")) {
+                    }else if(mList.get(0).equalsIgnoreCase("TEMPLE")){
                         mList.remove("TEMPLE");
                         activtyDay.getInstance().setList(mList);
-                        Intent intent = new Intent(MealsActivity.this, TemplesActivity.class);
+                        Intent intent = new Intent(CoffeShopActivity.this, TemplesActivity.class);
                         startActivity(intent);
-                    } else if (mList.get(0).equalsIgnoreCase("COFFE")) {
+                    }else if(mList.get(0).equalsIgnoreCase("COFFE")){
                         mList.remove("COFFE");
                         activtyDay.getInstance().setList(mList);
-                        Intent intent = new Intent(MealsActivity.this, CoffeShopActivity.class);
+                        Intent intent = new Intent(CoffeShopActivity.this, CoffeShopActivity.class);
                         startActivity(intent);
-                    } else if (mList.get(0).equalsIgnoreCase("MEAL")) {
+                    }else if(mList.get(0).equalsIgnoreCase("MEAL")){
                         mList.remove("MEAL");
                         activtyDay.getInstance().setList(mList);
-                        Intent intent = new Intent(MealsActivity.this, MealsActivity.class);
+                        Intent intent = new Intent(CoffeShopActivity.this, MealsActivity.class);
                         startActivity(intent);
                     }
                 }
+
+                // Toast.makeText(getContext(), "item is"+SelctedItem+value, Toast.LENGTH_SHORT).show();
+               /* Intent intent = new Intent(getContext(), IndividualProfileActivity.class);
+                intent.putExtra("KEY",value);
+                startActivity(intent);*/
 
             }
         });
@@ -169,13 +168,13 @@ public class MealsActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    private class GetHotelMeal extends AsyncTask<Void, Void, Void> {
+    private class GetCoffeShop extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(MealsActivity.this);
+            pDialog = new ProgressDialog(CoffeShopActivity.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(true);
             pDialog.show();
@@ -187,9 +186,9 @@ public class MealsActivity extends AppCompatActivity implements View.OnClickList
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String jsonStr = sh.makeServiceCall("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+latitude+"%2C"+longitude+"&radius=1500&type=hotel|food|returant&keyword=hotel&key=AIzaSyD5v2LwR5Vf3xVPIb8P6kqy_tn2YY5XfdU");
+            String jsonStr = sh.makeServiceCall("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+latitude+"%2C"+longitude+"&radius=1500&type=coffe|tea&keyword=coffe&key=AIzaSyD5v2LwR5Vf3xVPIb8P6kqy_tn2YY5XfdU");
             // Log.e("TAG", "Response from url: " + jsonStr);
-
+int d = 1000;
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
@@ -226,7 +225,7 @@ public class MealsActivity extends AppCompatActivity implements View.OnClickList
                         contact.put("lng", lng);
 
                         // adding contact to contact list
-                        contactList.add(contact); }
+                        contactList.add(contact);}
                 } catch (final JSONException e) {
                     Log.e("TAG", "Json parsing error: " + e.getMessage());
                     runOnUiThread(new Runnable() {
@@ -267,10 +266,10 @@ public class MealsActivity extends AppCompatActivity implements View.OnClickList
              * Updating parsed JSON data into ListView
              * */
             ListAdapter adapter = new SimpleAdapter(
-                    MealsActivity.this, contactList,
+                    CoffeShopActivity.this, contactList,
                     R.layout.list_hotel_item, new String[]{"name", "distance",
-                    "formattedAddress", "lat", "lng"}, new int[]{R.id.name_id,
-                    R.id.distance_id, R.id.formattedaddress_id, R.id.lat_id, R.id.lng_id});
+                    "formattedAddress","lat","lng"}, new int[]{R.id.name_id,
+                    R.id.distance_id, R.id.formattedaddress_id,R.id.lat_id,R.id.lng_id});
 
             lv.setAdapter(adapter);
         }
@@ -278,32 +277,22 @@ public class MealsActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    public void getcurrentadress() {
+    public void getcurrentadress(){
 
-        client = LocationServices.getFusedLocationProviderClient(MealsActivity.this);
+        client = LocationServices.getFusedLocationProviderClient(CoffeShopActivity.this);
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        client.getLastLocation().addOnSuccessListener(MealsActivity.this, new OnSuccessListener<Location>() {
+        client.getLastLocation().addOnSuccessListener(CoffeShopActivity.this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                if (location != null) {
+                if(location!=null){
                     // Toast.makeText(getApplicationContext(),"ff:0",Toast.LENGTH_LONG).show();
                     // locationAdd.setText(address);
                     latitude = location.getLatitude();
-                    longitude = location.getLongitude();
-                    Log.v("tag", "lat is" + latitude);
-                    Log.v("tag", "long is" + longitude);
+                    longitude=location.getLongitude();
+                    Log.v("tag","lat is"+latitude);
+                    Log.v("tag","long is"+longitude);
                     // Toast.makeText(getContext(),"ff:0"+latitude,Toast.LENGTH_LONG).show();
-                    new GetHotelMeal().execute();
+                    new GetCoffeShop().execute();
                 }
             }
         });
@@ -315,7 +304,7 @@ public class MealsActivity extends AppCompatActivity implements View.OnClickList
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
         int minute = mcurrentTime.get(Calendar.MINUTE);
 
-        mTimePicker = new TimePickerDialog(MealsActivity.this, new TimePickerDialog.OnTimeSetListener() {
+        mTimePicker = new TimePickerDialog(CoffeShopActivity.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                 mTime.setText(selectedHour + ":" + selectedMinute);
@@ -343,7 +332,7 @@ public class MealsActivity extends AppCompatActivity implements View.OnClickList
         // EditText text = findViewById(R.id.time);
         // int i = Integer.parseInt(String.valueOf(mcurrentTime));
         Intent intent = new Intent(this, MyBroadcastReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 234324263, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 234324253, intent, 0);
         AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
         Toast.makeText(this, "Alarm set in "+cal.getTimeInMillis()+"  seconds", Toast.LENGTH_LONG).show();

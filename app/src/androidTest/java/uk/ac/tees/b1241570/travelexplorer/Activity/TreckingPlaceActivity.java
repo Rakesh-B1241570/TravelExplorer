@@ -48,6 +48,8 @@ import studio.knowhere.travelappg.HttpHandler;
 import studio.knowhere.travelappg.R;
 import studio.knowhere.travelappg.ui.Class.ActivtyDay;
 import studio.knowhere.travelappg.ui.Class.MyBroadcastReceiver;
+import uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity;
+import uk.ac.tees.b1241570.travelexplorer.MealsActivity;
 
 public class TreckingPlaceActivity extends AppCompatActivity implements View.OnClickListener {
 

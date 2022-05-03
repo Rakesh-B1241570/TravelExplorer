@@ -46,6 +46,7 @@ import studio.knowhere.travelappg.HttpHandler;
 import studio.knowhere.travelappg.R;
 import uk.ac.tees.b1241570.travelexplorer.Database.PreferenceManager;
 import uk.ac.tees.b1241570.travelexplorer.Database.SqliteHelper;
+import uk.ac.tees.b1241570.travelexplorer.MealsActivity;
 import uk.ac.tees.b1241570.travelexplorer.ui.ActivtyDay;
 import uk.ac.tees.b1241570.travelexplorer.ui.MyBroadcastReceiver;
 
@@ -116,8 +117,8 @@ public class CoffeShopActivity extends AppCompatActivity implements View.OnClick
                 startAlert();
                 Log.v("TAG", "VALES ARE" + value);
                 if (mList.size() == 0) {
-                    Toast.makeText(CoffeShopActivity.this, "Last Option", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CoffeShopActivity.this, HomeActivity.class);
+                    Toast.makeText(uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity.this, "Last Option", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity.this, HomeActivity.class);
                     startActivity(intent);
                 } else {
 
@@ -125,32 +126,32 @@ public class CoffeShopActivity extends AppCompatActivity implements View.OnClick
                     if (mList.get(0).equalsIgnoreCase("BREAKFAST")) {
                         mList.remove("BREAKFAST");
                         activtyDay.getInstance().setList(mList);
-                        Intent intent = new Intent(CoffeShopActivity.this, BreakfastActivity.class);
+                        Intent intent = new Intent(uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity.this, BreakfastActivity.class);
                         startActivity(intent);
                     } else if (mList.get(0).equalsIgnoreCase("SHOPPING")) {
                         mList.remove("SHOPPING");
                         activtyDay.getInstance().setList(mList);
-                        Intent intent = new Intent(CoffeShopActivity.this, ShoppingMallActivity.class);
+                        Intent intent = new Intent(uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity.this, ShoppingMallActivity.class);
                         startActivity(intent);
                     } else if (mList.get(0).equalsIgnoreCase("TRECKING")) {
                         mList.remove("TRECKING");
                         activtyDay.getInstance().setList(mList);
-                        Intent intent = new Intent(CoffeShopActivity.this, TreckingPlaceActivity.class);
+                        Intent intent = new Intent(uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity.this, TreckingPlaceActivity.class);
                         startActivity(intent);
                     } else if (mList.get(0).equalsIgnoreCase("TEMPLE")) {
                         mList.remove("TEMPLE");
                         activtyDay.getInstance().setList(mList);
-                        Intent intent = new Intent(CoffeShopActivity.this, TemplesActivity.class);
+                        Intent intent = new Intent(uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity.this, TemplesActivity.class);
                         startActivity(intent);
                     } else if (mList.get(0).equalsIgnoreCase("COFFE")) {
                         mList.remove("COFFE");
                         activtyDay.getInstance().setList(mList);
-                        Intent intent = new Intent(CoffeShopActivity.this, CoffeShopActivity.class);
+                        Intent intent = new Intent(uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity.this, uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity.class);
                         startActivity(intent);
                     } else if (mList.get(0).equalsIgnoreCase("MEAL")) {
                         mList.remove("MEAL");
                         activtyDay.getInstance().setList(mList);
-                        Intent intent = new Intent(CoffeShopActivity.this, MealsActivity.class);
+                        Intent intent = new Intent(uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity.this, MealsActivity.class);
                         startActivity(intent);
                     }
                 }
@@ -175,7 +176,7 @@ public class CoffeShopActivity extends AppCompatActivity implements View.OnClick
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(CoffeShopActivity.this);
+            pDialog = new ProgressDialog(uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(true);
             pDialog.show();
@@ -268,7 +269,7 @@ public class CoffeShopActivity extends AppCompatActivity implements View.OnClick
              * Updating parsed JSON data into ListView
              * */
             ListAdapter adapter = new SimpleAdapter(
-                    CoffeShopActivity.this, contactList,
+                    uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity.this, contactList,
                     R.layout.list_hotel_item, new String[]{"name", "distance",
                     "formattedAddress", "lat", "lng"}, new int[]{R.id.name_id,
                     R.id.distance_id, R.id.formattedaddress_id, R.id.lat_id, R.id.lng_id});
@@ -281,9 +282,9 @@ public class CoffeShopActivity extends AppCompatActivity implements View.OnClick
 
     public void getcurrentadress() {
 
-        client = LocationServices.getFusedLocationProviderClient(CoffeShopActivity.this);
+        client = LocationServices.getFusedLocationProviderClient(uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity.this);
 
-        client.getLastLocation().addOnSuccessListener(CoffeShopActivity.this, new OnSuccessListener<Location>() {
+        client.getLastLocation().addOnSuccessListener(uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity.this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
                 if (location != null) {
@@ -307,7 +308,7 @@ public class CoffeShopActivity extends AppCompatActivity implements View.OnClick
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
         int minute = mcurrentTime.get(Calendar.MINUTE);
 
-        mTimePicker = new TimePickerDialog(CoffeShopActivity.this, new TimePickerDialog.OnTimeSetListener() {
+        mTimePicker = new TimePickerDialog(uk.ac.tees.b1241570.travelexplorer.CoffeShopActivity.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                 mTime.setText(selectedHour + ":" + selectedMinute);
